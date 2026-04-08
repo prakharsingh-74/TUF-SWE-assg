@@ -19,6 +19,15 @@ export const MONTH_THEMES: Record<number, MonthTheme> = {
   11: { name: 'December', heroImage: '/jan.png', primaryColor: '#9f1239' },
 };
 
+export interface CalendarEvent {
+  id: string;
+  title: string;
+}
+
+export interface DayEvents {
+  [date: string]: CalendarEvent[];
+}
+
 export interface Holiday {
   date: string; // "MM-DD"
   name: string;
