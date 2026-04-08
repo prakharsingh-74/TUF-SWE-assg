@@ -10,8 +10,9 @@
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 20px;
-  color: #0081C9;
+  color: var(--primary);
 }
+
 
 .paper {
   position: relative;

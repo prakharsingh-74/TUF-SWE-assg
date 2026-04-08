@@ -4,12 +4,14 @@ import styles from './HeroSection.module.css';
 interface HeroSectionProps {
   month: string;
   year: number;
+  image: string;
+  primaryColor: string;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ month, year }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ month, year, image, primaryColor }) => {
   return (
     <div className={styles.hero}>
-      <img src="/hero.png" alt="Mountain Climber" className={styles.image} />
+      <img src={image} alt={month} className={styles.image} />
       
       <div className={styles.overlay}>
         <div className={styles.dateInfo}>
@@ -39,7 +41,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ month, year }) => {
           preserveAspectRatio="none"
         >
           <path 
-            fill="#0081C9" 
+            fill={primaryColor} 
             fillOpacity="0.8" 
             d="M0,160L60,176C120,192,240,224,360,213.3C480,203,600,149,720,138.7C840,128,960,160,1080,176C1200,192,1320,192,1380,192L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
           ></path>
