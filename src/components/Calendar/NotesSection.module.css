@@ -74,3 +74,20 @@
     min-height: 200px;
   }
 }
+
+@media (max-width: 360px) {
+  .container {
+    padding: 10px;
+  }
+  .title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .textarea {
+    padding-left: 35px;
+  }
+  .paper::before {
+    left: 25px;
+  }
+}
+

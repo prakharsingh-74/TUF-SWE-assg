@@ -118,4 +118,20 @@
   .dayNumber {
     font-size: 0.9rem;
   }
+  .grid {
+    gap: 1px;
+  }
+  .dayName {
+    padding: 10px 0;
+  }
 }
+
+@media (max-width: 360px) {
+  .container {
+    padding: 10px;
+  }
+  .monthDisplay {
+    font-size: 1.2rem;
+  }
+}
+
