@@ -134,6 +134,45 @@
   opacity: 0.8;
 }
 
+.dayActions {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.eventMarker {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+.plannerBtn {
+  opacity: 0;
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day:hover .plannerBtn {
+  opacity: 0.8;
+}
+
+.plannerBtn:hover {
+  opacity: 1 !important;
+  transform: scale(1.1);
+}
+
 
 @media (max-width: 480px) {
   .dayNumber {

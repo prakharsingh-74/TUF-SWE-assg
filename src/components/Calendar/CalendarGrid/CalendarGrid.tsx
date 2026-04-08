@@ -9,12 +9,11 @@ import {
   isSameMonth, 
   isSameDay, 
   isWithinInterval,
-  isBefore,
   addMonths,
   subMonths
 } from 'date-fns';
 import styles from './CalendarGrid.module.css';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Plus } from 'lucide-react';
 import { HOLIDAYS } from '@/constants/calendarConfig';
 
 interface CalendarGridProps {
@@ -23,15 +22,19 @@ interface CalendarGridProps {
   startDate: Date | null;
   endDate: Date | null;
   onDateClick: (date: Date) => void;
+  onOpenPlanner: (date: Date) => void;
 }
+
 
 const CalendarGrid: React.FC<CalendarGridProps> = ({ 
   currentMonth, 
   onMonthChange, 
   startDate, 
   endDate, 
-  onDateClick 
+  onDateClick,
+  onOpenPlanner
 }) => {
+
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
   const startDateInView = startOfWeek(monthStart, { weekStartsOn: 1 });
@@ -44,20 +47,26 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
 
   const dayNames = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
+  // Subscribe to event updates
+  const [, setEventTick] = React.useState(0);
+  React.useEffect(() => {
+    const handleUpdate = () => setEventTick(tick => tick + 1);
+    window.addEventListener('calendar-events-updated', handleUpdate);
+    return () => window.removeEventListener('calendar-events-updated', handleUpdate);
+  }, []);
+
   const getDayDetails = (day: Date) => {
     const dayStr = format(day, 'MM-dd');
+    const dateKey = format(day, 'yyyy-MM-dd');
     const holiday = HOLIDAYS.find(h => h.date === dayStr);
     
-    // Check if day has notes
-    const monthKey = format(day, 'yyyy-MM');
-    const hasNote = typeof window !== 'undefined' ? !!localStorage.getItem(`notes-${monthKey}`) : false;
-    // Actually, the notes are currently per month, not per day. 
-    // I promised "note markers" so I'll make them appear if the month has notes, 
-    // OR better, I'll just check if a note exists for this specific day in a hypothetical day-note store.
-    // For now, I'll just show the marker if there's *any* note in the month to demonstrate the UI.
+    // Check if day has notes for markers
+    const savedEvents = typeof window !== 'undefined' ? localStorage.getItem(`events-${dateKey}`) : null;
+    const hasEvents = savedEvents ? JSON.parse(savedEvents).length > 0 : false;
     
-    return { holiday, hasNote };
+    return { holiday, hasEvents };
   };
+
 
   const getDayClass = (day: Date) => {
     const classes = [styles.day];
@@ -112,7 +121,21 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
             >
               <span className={styles.dayNumber}>{format(day, 'd')}</span>
               {holiday && <Star className={styles.holidayIcon} size={10} />}
+              
+              <div className={styles.dayActions}>
+                {getDayDetails(day).hasEvents && <div className={styles.eventMarker}></div>}
+                <button 
+                  className={styles.plannerBtn}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onOpenPlanner(day);
+                  }}
+                >
+                  <Plus size={14} />
+                </button>
+              </div>
             </div>
+
           );
         })}
       </div>

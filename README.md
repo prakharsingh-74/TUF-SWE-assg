@@ -35,12 +35,13 @@ particular date highlighter
 - **Seasonal Theming Engine**: The UI color palette and hero image automatically switch based on the current month (e.g., Snowy Mountains for Jan, Forest for Feb, Meadows for Mar).
 - **3D Page-Flip Animation**: A realistic 3D transition plays when navigating between months.
 - **Holiday Indicators**: Integrated markers (using a star icon) for global and seasonal holidays like New Year's Day and Valentine's Day.
+- **Google Calendar Style Planner**: Click the 'plus' icon on any date to open a dedicated task planner. Tasks are color-coded, persisted locally, and marked with a dot on the main grid.
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: Vanilla CSS Modules (Scoped, high-performance styling)
 - **Date Handling**: [date-fns](https://date-fns.org/)
@@ -86,6 +87,7 @@ src/components/Calendar/
 ├── CalendarGrid/      # Logic for date generation and range highlighting
 ├── HeroSection/       # Imagery, date overlay, and wave dividers
 ├── NotesSection/      # Rule-paper style memo area with persistence
+├── DayPlanner/        # Google Calendar style daily task manager
 ├── SpiralBinder/      # Decorative top binder/hook components
 └── CalendarWrapper/   # Main orchestration, theme engine, and animations
 ```

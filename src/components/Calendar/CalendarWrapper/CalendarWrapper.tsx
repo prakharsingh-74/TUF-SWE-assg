@@ -6,6 +6,7 @@ import SpiralBinder from '../SpiralBinder/SpiralBinder';
 import HeroSection from '../HeroSection/HeroSection';
 import CalendarGrid from '../CalendarGrid/CalendarGrid';
 import NotesSection from '../NotesSection/NotesSection';
+import DayPlanner from '../DayPlanner/DayPlanner';
 import { format, isBefore, isSameDay } from 'date-fns';
 import { MONTH_THEMES } from '@/constants/calendarConfig';
 
@@ -14,8 +15,10 @@ const CalendarWrapper: React.FC = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [activePlannerDate, setActivePlannerDate] = useState<Date | null>(null);
 
   const theme = MONTH_THEMES[currentMonth.getMonth()] || MONTH_THEMES[0];
+
 
   const handleMonthChange = (newDate: Date) => {
     setIsTransitioning(true);
@@ -46,7 +49,7 @@ const CalendarWrapper: React.FC = () => {
   const monthKey = format(currentMonth, 'yyyy-MM');
 
   return (
-    <div className={styles.pageContainer} style={{ '--primary': theme.primaryColor } as any}>
+    <div className={styles.pageContainer} style={{ '--primary': theme.primaryColor } as React.CSSProperties}>
       <div className={`${styles.calendarCard} ${isTransitioning ? styles.flipping : ''}`}>
         <SpiralBinder />
         
@@ -68,6 +71,7 @@ const CalendarWrapper: React.FC = () => {
               startDate={startDate}
               endDate={endDate}
               onDateClick={handleDateClick}
+              onOpenPlanner={setActivePlannerDate}
             />
           </div>
         </div>
@@ -78,8 +82,17 @@ const CalendarWrapper: React.FC = () => {
       <div className={styles.credits}>
         Designed for a premium wall experience
       </div>
+
+      {activePlannerDate && (
+        <DayPlanner 
+          date={activePlannerDate} 
+          onClose={() => setActivePlannerDate(null)}
+          primaryColor={theme.primaryColor}
+        />
+      )}
     </div>
   );
 };
+
 
 export default CalendarWrapper;
