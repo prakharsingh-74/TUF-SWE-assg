@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import styles from './CalendarWrapper.module.css';
-import SpiralBinder from './SpiralBinder';
-import HeroSection from './HeroSection';
-import CalendarGrid from './CalendarGrid';
-import NotesSection from './NotesSection';
+import SpiralBinder from '../SpiralBinder/SpiralBinder';
+import HeroSection from '../HeroSection/HeroSection';
+import CalendarGrid from '../CalendarGrid/CalendarGrid';
+import NotesSection from '../NotesSection/NotesSection';
 import { format, isBefore, isSameDay } from 'date-fns';
 import { MONTH_THEMES } from '@/constants/calendarConfig';
 
