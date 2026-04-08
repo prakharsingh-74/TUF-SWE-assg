@@ -1,0 +1,121 @@
+.container {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  user-select: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.monthDisplay {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  color: #555;
+  transition: all 0.2s ease;
+}
+
+.navBtn:hover {
+  background-color: #0081C9;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  background-color: #f0f0f0;
+  border: 1px solid #e0e0e0;
+}
+
+.dayName {
+  background-color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #999;
+}
+
+.weekendName {
+  color: #0081C9;
+}
+
+.day {
+  background-color: #fff;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.day:hover:not(.disabled) {
+  background-color: #f7f7f7;
+}
+
+.dayNumber {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+  z-index: 2;
+}
+
+.disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.weekend .dayNumber {
+  color: #0081C9;
+}
+
+.selectedStart, .selectedEnd {
+  background-color: #0081C9 !important;
+}
+
+.selectedStart .dayNumber, .selectedEnd .dayNumber {
+  color: #fff !important;
+}
+
+.inRange {
+  background-color: #e3f2fd !important;
+}
+
+.inRange .dayNumber {
+  color: #0081C9;
+}
+
+.selectedStart::after, .selectedEnd::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #0081C9;
+  z-index: 1;
+}
+
+@media (max-width: 480px) {
+  .dayNumber {
+    font-size: 0.9rem;
+  }
+}

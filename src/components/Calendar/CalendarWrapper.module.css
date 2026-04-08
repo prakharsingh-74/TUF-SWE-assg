@@ -1,0 +1,72 @@
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+}
+
+.calendarCard {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.12),
+    0 10px 20px rgba(0, 0, 0, 0.08);
+  overflow: visible;
+  position: relative;
+}
+
+.contentLayout {
+  display: flex;
+  flex-direction: row;
+  min-height: 500px;
+}
+
+.notesPanel {
+  flex: 2;
+  border-right: 1px solid #f0f0f0;
+}
+
+.calendarPanel {
+  flex: 3;
+}
+
+.footerLine {
+  height: 40px;
+  width: 100%;
+  background-color: #fcfcfc;
+  border-top: 1px solid #f0f0f0;
+}
+
+.credits {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+  .contentLayout {
+    flex-direction: column-reverse;
+  }
+  
+  .notesPanel {
+    border-right: none;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .calendarCard {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pageContainer {
+    padding: 10px;
+  }
+}
