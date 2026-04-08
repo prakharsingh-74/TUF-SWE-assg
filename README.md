@@ -2,7 +2,15 @@
 
 A premium, interactive wall calendar component built with **React** and **Next.js**. This project was developed as a solution for a Frontend Engineering Challenge, focusing on high visual fidelity, seamless interactivity, and robust responsive design.
 
-![Calendar Preview](C:/Users/prakh/.gemini/antigravity/brain/04f1b2c6-7edc-41fe-b365-e259b9ab9b3d/desktop_calendar_view_1775624840543.png)
+# Screenshots
+
+<img width="1919" height="1032" alt="image" src="https://github.com/user-attachments/assets/b52d76b3-062d-4298-bc0d-c070db504970" />
+<img width="1919" height="1032" alt="image" src="https://github.com/user-attachments/assets/bd35f15d-62e1-412d-894f-26bc55a13763" />
+Selected timeline
+<img width="1919" height="1025" alt="image" src="https://github.com/user-attachments/assets/e1d7c458-d821-4657-895e-58bc7f6d7af9" />
+particular date highlighter
+<img width="1919" height="1021" alt="image" src="https://github.com/user-attachments/assets/f0191b80-d4d2-4e7b-8f69-4a0f6ffd8e76" />
+
 
 ## ✨ Features
 
